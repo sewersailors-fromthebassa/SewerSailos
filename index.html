@@ -98,23 +98,23 @@
     .gallery .eyebrow{color:var(--red)}
     .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:145px;gap:12px}
     .photo{position:relative;overflow:hidden;background:linear-gradient(135deg,#233b2d,#161816);cursor:pointer}
-    .photo:nth-child(1){grid-column:span 5;grid-row:span 3}
-    .photo:nth-child(2){grid-column:span 4;grid-row:span 2}
-    .photo:nth-child(3){grid-column:span 3;grid-row:span 2}
-    .photo:nth-child(4){grid-column:span 4;grid-row:span 3}
-    .photo:nth-child(5){grid-column:span 3;grid-row:span 2}
-    .photo:nth-child(6){grid-column:span 5;grid-row:span 2}
+    .photo:nth-child(1){grid-column:span 5;grid-row:span 3; background-size: cover; background-position: 80%;}
+    .photo:nth-child(2){grid-column:span 4;grid-row:span 2;background-size: cover;}
+    .photo:nth-child(3){grid-column:span 3;grid-row:span 2;background-size: cover;}
+    .photo:nth-child(4){grid-column:span 4;grid-row:span 3;background-size: cover;}
+    .photo:nth-child(5){grid-column:span 3;grid-row:span 2;background-size: cover;}
+    .photo:nth-child(6){grid-column:span 5;grid-row:span 2;background-size: cover;}
     .photo:before{content:"PHOTO "+attr(data-no);position:absolute;inset:0;display:grid;place-items:center;font-family:"Special Elite";color:#d8cfba55;font-size:1.2rem;z-index:1}
     .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#0009);opacity:.45}
     .photo:hover{filter:saturate(1.2)}
     .photo:hover:after{opacity:.2}
     /* Replace these gradients with real image URLs/classes */
-    .p1{background:linear-gradient(145deg,#53684d,#172019 50%,#773b2e)}
-    .p2{background:linear-gradient(45deg,#8a6c4e,#273a30)}
-    .p3{background:linear-gradient(140deg,#252b2a,#8c3b2d)}
-    .p4{background:linear-gradient(20deg,#314b3a,#171917 60%,#a76d3e)}
-    .p5{background:linear-gradient(120deg,#71372d,#273e31)}
-    .p6{background:linear-gradient(155deg,#94835f,#202821 65%)}
+    .p1{background:url(img/bundan.jpeg)}
+    .p2{background:url(img/bundan2.jpeg)}
+    .p3{background:url(img/catenina.jpeg)}
+    .p4{background:url(img/jack.jpeg)}
+    .p5{background:url(img/pax.jpeg)}
+    .p6{background:url(img/WhatsApp\ Image\ 2026-10-31\ at\ 17.15.57.jpeg)}
 
     /* CONTACT */
     .contact{background:var(--black)}
@@ -237,7 +237,7 @@
           <div class="photo p2" data-no="02" data-label="Backstage"></div>
           <div class="photo p3" data-no="03" data-label="Crowd"></div>
           <div class="photo p4" data-no="04" data-label="Live — Festival"></div>
-          <div class="photo p5" data-no="05" data-label="Road"></div>
+          <div class="photo p5" data-no="05" data-label="Road"> </div>
           <div class="photo p6" data-no="06" data-label="Encore"></div>
         </div>
       </div>
@@ -255,6 +255,8 @@
               <a href="mailto:sewersailors@gamil.com">sewersailors@gmail.com</a>
               <a href="https://www.instagram.com/sewersailors/" target="_blank" rel="noopener">Instagram / @sewersailors</a>
               <a href="https://www.facebook.com/p/Sewer-Sailors-100090119056146/" target="_blank" rel="noopener">Facebook / Sewer Sailors</a>
+              <iframe scrolling="no" style="border: 0;width: 100%;height: 50px;"
+                src="https://bandcamp.com/band_follow_button_deluxe/2594406158"></iframe>
             </div>
           </div>
           <form id="contactForm">
