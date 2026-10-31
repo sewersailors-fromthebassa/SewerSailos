@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sewer Sailors — Celtic Punk from the underground. Live, foto, bio e contatti.">
+  <title>Sewer Sailors — Celtic Punk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:#0b0c0b; --ink:#121412; --paper:#e7dfc8; --cream:#f2ead5;
+      --green:#294735; --green2:#3d6048; --red:#9b3027; --rust:#b14b32;
+      --line:rgba(231,223,200,.2); --muted:#aaa38f;
+      --max:1180px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--black);color:var(--paper);font-family:"Oswald",sans-serif;line-height:1.5;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;z-index:100;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .eyebrow{font-family:"Special Elite",serif;letter-spacing:.16em;text-transform:uppercase;color:#c6bda5;font-size:.8rem}
+    h2{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(3rem,8vw,6.8rem);line-height:.9;letter-spacing:.015em}
+    .section{padding:110px 0;position:relative}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:55px}
+    .section-head p{max-width:380px;color:var(--muted);font-size:1.05rem}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:50;padding:18px 0;background:linear-gradient(#090a09dd,transparent);transition:.3s}
+    .nav.scrolled{background:#0b0c0bf5;border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:"Anton";font-size:1.7rem;letter-spacing:.04em}
+    .brand span{color:#b34a32}
+    .links{display:flex;gap:27px;font-size:.82rem;text-transform:uppercase;letter-spacing:.12em}
+    .links a{position:relative}
+    .links a:after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--rust);transition:.25s}
+    .links a:hover:after{width:100%}
+    .menu{display:none;background:none;border:0;color:var(--paper);font-size:1.8rem}
+
+    /* HERO */
+    .hero{min-height:100svh;display:grid;place-items:center;position:relative;overflow:hidden;background:
+      radial-gradient(circle at 70% 40%,#31513c55,transparent 32%),
+      linear-gradient(110deg,#080908 0%,#121612 50%,#080908 100%)}
+    .hero:before{content:"";position:absolute;inset:0;opacity:.32;background:
+      linear-gradient(90deg,transparent 0 49%,#0005 50%,transparent 51%),
+      repeating-linear-gradient(100deg,transparent 0 30px,#ffffff08 31px 32px);
+      transform:skewX(-12deg) scale(1.3)}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(transparent,var(--black))}
+    .hero-art{position:absolute;right:-4vw;bottom:-7vw;width:min(58vw,760px);aspect-ratio:1;opacity:.72;transform:rotate(-8deg)}
+    .hero-art .ring{position:absolute;inset:12%;border:3px solid #b69e6d44;border-radius:50%;box-shadow:0 0 0 18px #0003,0 0 0 21px #b69e6d22}
+    .hero-art .anchor{position:absolute;inset:20%;font-size:18rem;display:grid;place-items:center;color:#c7b38333;font-family:serif}
+    .hero-content{position:relative;z-index:2;width:min(var(--max),calc(100% - 40px));padding-top:70px}
+    .hero-kicker{display:inline-block;border:1px solid #d6c7a755;padding:8px 13px;margin-bottom:25px;font-family:"Special Elite";font-size:.75rem;letter-spacing:.18em}
+    .hero h1{font-family:"Anton";font-size:clamp(5rem,16vw,13.5rem);line-height:.78;text-transform:uppercase;letter-spacing:-.02em;max-width:900px}
+    .hero h1 .red{color:var(--rust);display:block;margin-left:8vw}
+    .hero-sub{margin:35px 0 28px;max-width:540px;font-family:"Special Elite";font-size:1rem;color:#c1b9a5}
+    .cta{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;background:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.1em;border:1px solid #c85a49;transition:.2s}
+    .cta:hover{background:#bd4034;transform:translateY(-2px)}
+    .scroll{position:absolute;bottom:24px;left:20px;z-index:3;font-family:"Special Elite";font-size:.7rem;letter-spacing:.2em;color:#9d998b;writing-mode:vertical-rl}
+
+    /* ABOUT */
+    .about{background:var(--paper);color:var(--ink)}
+    .about .eyebrow{color:var(--red)}
+    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:90px;align-items:center}
+    .about h2{color:var(--ink)}
+    .about-copy{font-size:1.2rem;line-height:1.65}
+    .about-copy p+p{margin-top:20px}
+    .stamp{margin-top:35px;display:inline-block;border:2px solid var(--red);color:var(--red);padding:12px 17px;transform:rotate(-3deg);font-family:"Special Elite";text-transform:uppercase}
+    .crew{position:relative;min-height:440px;background:linear-gradient(145deg,#253d2f,#111);overflow:hidden;border:10px solid #171a17;box-shadow:18px 18px 0 #b8aa8a}
+    .crew:before{content:"SEWER SAILORS";position:absolute;inset:0;display:grid;place-items:center;color:#ddd2b744;font-family:"Anton";font-size:clamp(3rem,7vw,7rem);transform:rotate(-18deg)}
+    .crew:after{content:"PHOTO / REPLACE ME";position:absolute;bottom:15px;left:15px;color:#d8cfba;font-family:"Special Elite";font-size:.75rem}
+
+    /* LIVE */
+    .live{background:#101310}
+    .ticket{display:grid;grid-template-columns:145px 1fr auto;align-items:center;gap:30px;padding:25px 0;border-top:1px solid var(--line)}
+    .ticket:last-child{border-bottom:1px solid var(--line)}
+    .date{text-align:center;border-right:1px solid var(--line);padding-right:25px}
+    .date strong{display:block;font-family:"Anton";font-size:2.8rem;line-height:.9}
+    .date span{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:#aaa}
+    .event h3{font-family:"Anton";font-size:2rem;text-transform:uppercase}
+    .event p{color:#aaa;margin-top:3px}
+    .venue-link{color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:.2s}
+    .venue-link:hover{color:var(--paper);border-bottom-color:var(--rust)}
+    .ticket-link{border:1px solid #a99e84;padding:10px 14px;text-transform:uppercase;font-size:.72rem;letter-spacing:.12em}
+    .ticket-link:hover{background:var(--paper);color:var(--ink)}
+    .sold{color:#b85a48;border-color:#7b4439}
+
+    /* GALLERY */
+    .gallery{background:#d9d0b9;color:#111}
+    .gallery .eyebrow{color:var(--red)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:145px;gap:12px}
+    .photo{position:relative;overflow:hidden;background:linear-gradient(135deg,#233b2d,#161816);cursor:pointer}
+    .photo:nth-child(1){grid-column:span 5;grid-row:span 3}
+    .photo:nth-child(2){grid-column:span 4;grid-row:span 2}
+    .photo:nth-child(3){grid-column:span 3;grid-row:span 2}
+    .photo:nth-child(4){grid-column:span 4;grid-row:span 3}
+    .photo:nth-child(5){grid-column:span 3;grid-row:span 2}
+    .photo:nth-child(6){grid-column:span 5;grid-row:span 2}
+    .photo:before{content:"PHOTO "+attr(data-no);position:absolute;inset:0;display:grid;place-items:center;font-family:"Special Elite";color:#d8cfba55;font-size:1.2rem;z-index:1}
+    .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#0009);opacity:.45}
+    .photo:hover{filter:saturate(1.2)}
+    .photo:hover:after{opacity:.2}
+    /* Replace these gradients with real image URLs/classes */
+    .p1{background:linear-gradient(145deg,#53684d,#172019 50%,#773b2e)}
+    .p2{background:linear-gradient(45deg,#8a6c4e,#273a30)}
+    .p3{background:linear-gradient(140deg,#252b2a,#8c3b2d)}
+    .p4{background:linear-gradient(20deg,#314b3a,#171917 60%,#a76d3e)}
+    .p5{background:linear-gradient(120deg,#71372d,#273e31)}
+    .p6{background:linear-gradient(155deg,#94835f,#202821 65%)}
+
+    /* CONTACT */
+    .contact{background:var(--black)}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}
+    .contact h2{font-size:clamp(3.5rem,7vw,6.5rem)}
+    .contact-info{margin-top:35px;display:grid;gap:14px}
+    .contact-info a{font-family:"Special Elite";font-size:1.05rem;color:#d4ccb7}
+    .contact-info a:hover{color:#cf624e}
+    form{display:grid;gap:15px}
+    input,textarea{width:100%;background:#111411;border:1px solid #3c4039;color:var(--paper);padding:15px 16px;font:inherit;outline:none}
+    input:focus,textarea:focus{border-color:#8d846e}
+    textarea{min-height:180px;resize:vertical}
+    .submit{justify-self:start;cursor:pointer;font:700 .8rem "Oswald";color:var(--paper);background:var(--red);border:1px solid #c85a49;padding:14px 24px;text-transform:uppercase;letter-spacing:.1em}
+    .form-note{font-size:.75rem;color:#777}
+
+    footer{border-top:1px solid var(--line);padding:25px 0;color:#777;font-size:.75rem}
+    footer .wrap{display:flex;justify-content:space-between;gap:20px}
+
+    /* MODAL */
+    .modal{position:fixed;inset:0;background:#000e;z-index:100;display:none;place-items:center;padding:25px}
+    .modal.open{display:grid}
+    .modal-box{width:min(900px,100%);height:min(80vh,650px);background:#172019;border:1px solid #8b8068;position:relative;display:grid;place-items:center}
+    .modal-label{font-family:"Special Elite";color:#d8cfba}
+    .close{position:absolute;right:12px;top:8px;border:0;background:none;color:#eee;font-size:2rem;cursor:pointer}
+
+    @media(max-width:800px){
+      .links{display:none;position:absolute;top:65px;left:20px;right:20px;background:#0c0e0c;border:1px solid var(--line);padding:20px;flex-direction:column;gap:18px}
+      .links.open{display:flex}.menu{display:block}
+      .section{padding:75px 0}.section-head{display:block;margin-bottom:35px}.section-head p{margin-top:18px}
+      .hero-art{width:90vw;opacity:.35;right:-20vw}
+      .hero h1{font-size:clamp(4.5rem,19vw,8rem)}
+      .about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}
+      .crew{min-height:300px}
+      .ticket{grid-template-columns:85px 1fr;gap:18px}
+      .date{padding-right:15px}.date strong{font-size:2.1rem}
+      .event h3{font-size:1.5rem}.ticket-link{grid-column:2;justify-self:start}
+      .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+      .photo:nth-child(n){grid-column:auto;grid-row:auto}
+      .photo:nth-child(1){grid-column:span 2;grid-row:span 2}
+      .photo:nth-child(4){grid-column:span 2}
+      footer .wrap{display:block}.footer-right{margin-top:8px}
+    }
+    @media(max-width:460px){
+      .wrap{width:min(100% - 28px,var(--max))}
+      .hero-content{width:min(100% - 28px,var(--max))}
+      .hero h1{font-size:4.35rem}
+      .hero h1 .red{margin-left:2vw}
+      .about-copy{font-size:1.05rem}
+      .gallery-grid{grid-auto-rows:125px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="#home" class="brand">SEWER <span>SAILORS</span></a>
+      <button class="menu" id="menu" aria-label="Apri menu">☰</button>
+      <div class="links" id="links">
+        <a href="#bio">Bio</a><a href="#live">Live</a><a href="#foto">Foto</a><a href="#contatti">Contatti</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-art" aria-hidden="true"><div class="ring"></div><div class="anchor">⚓</div></div>
+      <div class="hero-content">
+        <div class="hero-kicker">Celtic Punk · Bologna · Est. 20XX</div>
+        <h1>Sewer <span class="red">Sailors</span></h1>
+        <p class="hero-sub">Birra, corde, sudore e canzoni da porto. Celtic punk dall'underground, senza salvagente.</p>
+        <a class="cta" href="#live">Salpa con noi <span>→</span></a>
+      </div>
+      <div class="scroll">SCROLL TO SAIL</div>
+    </section>
+
+    <section class="section about" id="bio">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">01 / La ciurma</div><h2>La Bio</h2></div>
+          <p>Una band nata tra pub fumosi, strade bagnate e casse spinte al limite.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>I <strong>Sewer Sailors</strong> sono una band Celtic Punk che mescola l'energia del punk con melodie folk, cori da pub e storie di mare.</p>
+            <p>Chitarre ruggenti, violino, ritmi veloci e una sana dose di caos: il risultato è musica fatta per essere suonata forte e cantata insieme.</p>
+            <p>Dal primo brindisi all'ultimo encore, la regola è semplice: <strong>nessuno resta a terra.</strong></p>
+            <div class="stamp">No calm seas · No quiet nights</div>
+          </div>
+          <div class="crew" role="img" aria-label="Spazio per una foto della band"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section live" id="live">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">02 / Dove ci trovi</div><h2>Prossimi Live</h2></div>
+          <p>Segna la data. Porta gli amici. Il resto lo facciamo noi.</p>
+        </div>
+        <div class="shows">
+          <article class="ticket">
+            <div class="date"><strong>12</strong><span>Ott · 2026</span></div>
+            <div class="event"><h3>Irish Night</h3><p><a class="venue-link" href="https://www.google.com/maps/search/?api=1&query=Locomotiv+Club+Bologna" target="_blank" rel="noopener noreferrer">Locomotiv Club · Bologna, IT ↗</a></p></div>
+            <a class="ticket-link" href="#" aria-label="Informazioni Irish Night">Info / Ticket</a>
+          </article>
+          <article class="ticket">
+            <div class="date"><strong>31</strong><span>Ott · 2026</span></div>
+            <div class="event"><h3>Halloween Riot</h3><p><a class="venue-link" href="https://www.google.com/maps/search/?api=1&query=Freakout+Club+Bologna" target="_blank" rel="noopener noreferrer">Freakout Club · Bologna, IT ↗</a></p></div>
+            <a class="ticket-link" href="#" aria-label="Informazioni Halloween Riot">Info / Ticket</a>
+          </article>
+          <article class="ticket">
+            <div class="date"><strong>21</strong><span>Nov · 2026</span></div>
+            <div class="event"><h3>Harbour Fest</h3><p><a class="venue-link" href="https://www.google.com/maps/search/?api=1&query=Venue+Harbour+Fest" target="_blank" rel="noopener noreferrer">Venue / città da confermare ↗</a></p></div>
+            <a class="ticket-link sold" href="#" aria-label="Informazioni Harbour Fest">In arrivo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="foto">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">03 / Dal ponte</div><h2>Foto</h2></div>
+          <p>Momenti rubati dai concerti passati. Clicca una foto per aprirla.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="photo p1" data-no="01" data-label="Live — Bologna"></div>
+          <div class="photo p2" data-no="02" data-label="Backstage"></div>
+          <div class="photo p3" data-no="03" data-label="Crowd"></div>
+          <div class="photo p4" data-no="04" data-label="Live — Festival"></div>
+          <div class="photo p5" data-no="05" data-label="Road"></div>
+          <div class="photo p6" data-no="06" data-label="Encore"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contatti">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">04 / Get in touch</div><h2>Contatti</h2></div>
+          <p>Booking, stampa, collaborazioni o semplicemente vuoi farci sapere dove dobbiamo suonare?</p>
+        </div>
+        <div class="contact-grid">
+          <div>
+            <div class="contact-info">
+              <a href="mailto:booking@sewersailors.com">booking@sewersailors.com</a>
+              <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram / @sewersailors</a>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook / Sewer Sailors</a>
+            </div>
+          </div>
+          <form id="contactForm">
+            <input type="text" name="name" placeholder="Il tuo nome" required>
+            <input type="email" name="email" placeholder="La tua email" required>
+            <input type="text" name="subject" placeholder="Oggetto">
+            <textarea name="message" placeholder="Scrivi il tuo messaggio..." required></textarea>
+            <button class="submit" type="submit">Invia messaggio →</button>
+            <div class="form-note">Il modulo apre il tuo client email: sostituisci l'indirizzo booking nel codice con quello reale della band.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="year"></span> SEWER SAILORS. ALL RIGHTS RESERVED.</div>
+      <div class="footer-right">MADE FOR LOUD NIGHTS & ROUGH SEAS.</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Foto">
+    <div class="modal-box">
+      <button class="close" id="close" aria-label="Chiudi">×</button>
+      <div class="modal-label" id="modalLabel">PHOTO</div>
+    </div>
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const menu = document.getElementById('menu');
+    const links = document.getElementById('links');
+    const modal = document.getElementById('modal');
+    const modalLabel = document.getElementById('modalLabel');
+
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+    menu.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    document.querySelectorAll('.photo').forEach(photo => {
+      photo.addEventListener('click', () => {
+        modalLabel.textContent = photo.dataset.label || photo.dataset.no;
+        modal.classList.add('open');
+      });
+    });
+    document.getElementById('close').addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') modal.classList.remove('open'); });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const data = new FormData(e.currentTarget);
+      const to = 'booking@sewersailors.com';
+      const subject = encodeURIComponent(data.get('subject') || 'Contatto dal sito Sewer Sailors');
+      const body = encodeURIComponent(
+        `Nome: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`
+      );
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
