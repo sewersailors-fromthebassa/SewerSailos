@@ -259,13 +259,19 @@
                 src="https://bandcamp.com/band_follow_button_deluxe/2594406158"></iframe>
             </div>
           </div>
-          <form id="contactForm" action="https://formsubmit.co/sewersailors@gmail.com" method="POST">
+          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Chiave pubblica di Web3Forms: sostituiscila con la tua (vedi istruzioni) -->
+            <input type="hidden" name="access_key" value="f09d8bed-6a69-4ae3-87a9-ba32d80d1d8d">
+            <input type="hidden" name="from_name" value="Sito Sewer Sailors">
+            <input type="hidden" name="subject" value="Nuovo messaggio dal sito Sewer Sailors">
+            <!-- Honeypot anti-spam: i bot lo compilano, gli umani no -->
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
             <input type="text" name="name" placeholder="Il tuo nome" required>
             <input type="email" name="email" placeholder="La tua email" required>
-            <input type="text" name="subject" placeholder="Oggetto">
+            <input type="text" name="user_subject" placeholder="Oggetto">
             <textarea name="message" placeholder="Scrivi il tuo messaggio..." required></textarea>
             <button class="submit" type="submit">Invia messaggio →</button>
-            <div class="form-note">Il modulo apre il tuo client email: sostituisci l'indirizzo booking nel codice con quello reale della band.</div>
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
           </form>
         </div>
       </div>
@@ -309,15 +315,45 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.getElementById('contactForm').addEventListener('submit', e => {
+   const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    form.addEventListener('submit', async e => {
       e.preventDefault();
-      const data = new FormData(e.currentTarget);
-      const to = 'booking@sewersailors.com';
-      const subject = encodeURIComponent(data.get('subject') || 'Contatto dal sito Sewer Sailors');
-      const body = encodeURIComponent(
-        `Nome: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`
-      );
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      const btn = form.querySelector('.submit');
+      const label = btn.textContent;
+      const data = new FormData(form);
+
+      // Se l'utente ha scritto un oggetto, lo usa come oggetto della mail
+      const userSubject = (data.get('user_subject') || '').toString().trim();
+      if (userSubject) data.set('subject', `[Sito] ${userSubject}`);
+      data.delete('user_subject');
+
+      btn.disabled = true;
+      btn.textContent = 'Invio in corso…';
+      statusEl.className = 'form-status';
+      statusEl.textContent = '';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        });
+        const json = await res.json();
+        if (res.ok && json.success) {
+          statusEl.className = 'form-status ok';
+          statusEl.textContent = 'Messaggio inviato! Ti risponderemo presto.';
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Errore di invio');
+        }
+      } catch (err) {
+        statusEl.className = 'form-status err';
+        statusEl.textContent = 'Invio non riuscito. Riprova o scrivici a sewersailors@gmail.com';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = label;
+      }
     });
   </script>
 </body>
