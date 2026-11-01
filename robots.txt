@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sewersailors-fromthebassa.github.io/SewerSailos/sitemap.xml
