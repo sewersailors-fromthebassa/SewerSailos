@@ -104,6 +104,9 @@
     /* .crew:before{content:"SEWER SAILORS";position:absolute;inset:0;display:grid;place-items:center;color:#ddd2b744;font-family:"Anton";font-size:clamp(3rem,7vw,7rem);transform:rotate(-18deg)} */
     /* .crew:after{content:"PHOTO / REPLACE ME";position:absolute;bottom:15px;left:15px;color:#d8cfba;font-family:"Special Elite";font-size:.75rem} */
 
+    /*Merch*/
+    
+
     /* LIVE */
     .live{background:#101310}
     .ticket{display:grid;grid-template-columns:145px 1fr auto;align-items:center;gap:30px;padding:25px 0;border-top:1px solid var(--line)}
@@ -125,11 +128,13 @@
     .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:145px;gap:12px}
     .photo{position:relative;overflow:hidden;background:linear-gradient(135deg,#233b2d,#161816);cursor:pointer}
     .photo:nth-child(1){grid-column:span 5;grid-row:span 3; background-size: cover; background-position: 80%;}
+    .merch .gallery-grid .photo{grid-column:1/-1}
     .photo:nth-child(2){grid-column:span 4;grid-row:span 2;background-size: cover;}
     .photo:nth-child(3){grid-column:span 3;grid-row:span 2;background-size: cover;}
     .photo:nth-child(4){grid-column:span 4;grid-row:span 3;background-size: cover;}
     .photo:nth-child(5){grid-column:span 3;grid-row:span 2;background-size: cover;}
     .photo:nth-child(6){grid-column:span 5;grid-row:span 2;background-size: cover;}
+    .photo:nth-child(7){background-size: cover;}
     .photo:before{content:"PHOTO "+attr(data-no);position:absolute;inset:0;display:grid;place-items:center;font-family:"Special Elite";color:#d8cfba55;font-size:1.2rem;z-index:1}
     .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#0009);opacity:.45}
     .photo:hover{filter:saturate(1.2)}
@@ -141,6 +146,7 @@
     .p4{background:url(img/jack.jpeg)}
     .p5{background:url(img/pax.jpeg)}
     .p6{background:url(img/WhatsApp\ Image\ 2026-10-31\ at\ 17.15.57.jpeg)}
+    .p7{background:url(img/merch_maglia_nera1.jpeg)}
 
     /* CONTACT */
     .contact{background:var(--black)}
@@ -219,7 +225,7 @@
     <section class="section about" id="bio">
       <div class="wrap">
         <div class="section-head">
-          <div><div class="eyebrow">01 / La ciurma</div><h2>La Bio</h2></div>
+          <div><div class="eyebrow">01 / La ciurma</div><h2>Bio</h2></div>
           <p>Una band nata tra pub fumosi, strade bagnate e casse spinte al limite.</p>
         </div>
         <div class="about-grid">
@@ -229,7 +235,7 @@
             <p>Dal primo brindisi all'ultimo encore, la regola è semplice: <strong>nessuno resta a terra.</strong></p>
             <div class="stamp">No calm seas · No quiet nights</div>
           </div>
-          <div class="crew" role="img" aria-label="Spazio per una foto della band">
+          <div class="crew" role="img" aria-label="immagine di tutti i puzzolenti componenti">
             <img src="img/tutti.jpeg" alt="Sewer Sailors, band Celtic Punk di Bologna, foto di gruppo" loading="lazy" decoding="async">
           </div>
         </div>
@@ -252,10 +258,32 @@
       </div>
     </section>
 
+    <section class="section merch" id="merch">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">03 / il nostro merch</div>
+            <h2>Merch</h2>
+          </div>
+          <p>accessori magici per diventare nutrie</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>Il <strong>MERCH</strong> lo puoi trovare solamente ai nostri live. NON farti pregare, vieni e scopri quali nuovi accessori abbiamo stampato per te!</p>
+            <p><strong>NOW AVAILABLE:</strong>T - shirt nere con stampa bianca &rarr; </p>
+            <p><strong>STAY TUNE</strong> per tutti i prossimi gadget!</p>
+          </div>
+          <div class="gallery-grid">
+           <div class="photo p7" data-no="07"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section gallery" id="foto">
       <div class="wrap">
         <div class="section-head">
-          <div><div class="eyebrow">03 / Dal ponte</div><h2>Foto</h2></div>
+          <div><div class="eyebrow">04 / Dal ponte</div><h2>Foto</h2></div>
           <p>Momenti rubati dai concerti passati. Clicca una foto per aprirla.</p>
         </div>
         <div class="gallery-grid">
@@ -272,7 +300,7 @@
     <section class="section contact" id="contatti">
       <div class="wrap">
         <div class="section-head">
-          <div><div class="eyebrow">04 / Get in touch</div><h2>Contatti</h2></div>
+          <div><div class="eyebrow">05 / Get in touch</div><h2>Contatti</h2></div>
           <p>Booking, stampa, collaborazioni o semplicemente vuoi farci sapere dove dobbiamo suonare?</p>
         </div>
         <div class="contact-grid">
