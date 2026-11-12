@@ -59,10 +59,20 @@ h2{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(3rem,
 .about-copy p+p{margin-top:20px}
 .stamp{margin-top:35px;display:inline-block;border:2px solid var(--red);color:var(--red);padding:12px 17px;transform:rotate(-3deg);font-family:"Special Elite";text-transform:uppercase}
 .crew{position:relative;min-height:440px;background:linear-gradient(145deg,#253d2f,#111);overflow:hidden;border:10px solid #171a17;box-shadow:18px 18px 0 #b8aa8a}
+.crew img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* .crew:before{content:"SEWER SAILORS";position:absolute;inset:0;display:grid;place-items:center;color:#ddd2b744;font-family:"Anton";font-size:clamp(3rem,7vw,7rem);transform:rotate(-18deg)} */
 /* .crew:after{content:"PHOTO / REPLACE ME";position:absolute;bottom:15px;left:15px;color:#d8cfba;font-family:"Special Elite";font-size:.75rem} */
 
 /* MERCH */
+.merch-carousel{position:relative;width:min(100%,360px);aspect-ratio:1;justify-self:center;overflow:hidden;background:#e7dfc8}
+.merch-carousel .merch-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain; background-color: white;}
+.merch-carousel .merch-slide[hidden]{display:none}
+.merch-carousel-control{position:absolute;top:50%;display:grid;place-items:center;width:40px;height:40px;transform:translateY(-50%);border:1px solid #e7dfc899;border-radius:50%;background:#0b0c0bcc;color:#e7dfc8;font-size:1.8rem;line-height:1;cursor:pointer}
+.merch-carousel-control:hover{background:#9b3027}
+.merch-carousel-control:focus-visible{outline:2px solid #9b3027;outline-offset:3px}
+.merch-carousel-control.previous{left:12px}
+.merch-carousel-control.next{right:12px}
+.merch-carousel-count{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);padding:3px 9px;background:#0b0c0bcc;color:#e7dfc8;font-size:.75rem;letter-spacing:.1em}
 
 
 /* LIVE */
@@ -89,28 +99,17 @@ h2{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(3rem,
 .gallery{background:#d9d0b9;color:#111}
 .gallery .eyebrow{color:var(--red)}
 .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:145px;gap:12px}
-.photo{position:relative;overflow:hidden;background:linear-gradient(135deg,#233b2d,#161816);cursor:pointer}
-.photo:nth-child(1){grid-column:span 5;grid-row:span 3; background-size: cover; background-position: 80%;}
-.merch .gallery-grid .photo{grid-column:1/-1}
-.photo:nth-child(2){grid-column:span 4;grid-row:span 2;background-size: cover;}
-.photo:nth-child(3){grid-column:span 3;grid-row:span 2;background-size: cover;}
-.photo:nth-child(4){grid-column:span 4;grid-row:span 3;background-size: cover;}
-.photo:nth-child(5){grid-column:span 3;grid-row:span 2;background-size: cover;}
-.photo:nth-child(6){grid-column:span 5;grid-row:span 2;background-size: cover;}
-.photo:nth-child(7){background-size: cover;}
+.photo{position:relative;overflow:hidden;background:linear-gradient(135deg,#233b2d,#161816)}
+.photo:nth-child(1){grid-column:span 5;grid-row:span 2}
+.photo:nth-child(2){grid-column:span 4;grid-row:span 2}
+.photo:nth-child(3){grid-column:span 3;grid-row:span 2}
+.photo:nth-child(4){grid-column:span 4;grid-row:span 3}
+.photo:nth-child(5){grid-column:span 3;grid-row:span 3}
+.photo:nth-child(6){grid-column:span 5;grid-row:span 2}
+.photo img{width:100%;height:100%;object-fit:cover}
+/* .photo.p1 img{object-position:80%;} */
 .photo:before{content:"PHOTO "+attr(data-no);position:absolute;inset:0;display:grid;place-items:center;font-family:"Special Elite";color:#d8cfba55;font-size:1.2rem;z-index:1}
 .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#0009);opacity:.45}
-.photo:hover{filter:saturate(1.2)}
-.photo:hover:after{opacity:.2}
-/* Replace these gradients with real image URLs/classes */
-/* NB: i percorsi sono relativi a questo file (css/), quindi partono da ../img/ */
-.p1{background:url(../img/bundan.jpeg)}
-.p2{background:url(../img/bundan2.jpeg)}
-.p3{background:url(../img/catenina.jpeg)}
-.p4{background:url(../img/jack.jpeg)}
-.p5{background:url(../img/pax.jpeg)}
-.p6{background:url(../img/WhatsApp\ Image\ 2026-10-31\ at\ 17.15.57.jpeg)}
-.p7{background:url(../img/merch_maglia_nera1.jpeg)}
 
 /* CONTACT */
 .contact{background:var(--black)}
@@ -130,13 +129,6 @@ textarea{min-height:180px;resize:vertical}
 footer{border-top:1px solid var(--line);padding:25px 0;color:#777;font-size:.75rem}
 footer .wrap{display:flex;justify-content:space-between;gap:20px}
 
-/* MODAL */
-.modal{position:fixed;inset:0;background:#000e;z-index:100;display:none;place-items:center;padding:25px}
-.modal.open{display:grid}
-.modal-box{width:min(900px,100%);height:min(80vh,650px);background:#172019;border:1px solid #8b8068;position:relative;display:grid;place-items:center}
-.modal-label{font-family:"Special Elite";color:#d8cfba}
-.close{position:absolute;right:12px;top:8px;border:0;background:none;color:#eee;font-size:2rem;cursor:pointer}
-
 /* RESPONSIVE */
 @media(max-width:800px){
   .links{display:none;position:absolute;top:65px;left:20px;right:20px;background:#0c0e0c;border:1px solid var(--line);padding:20px;flex-direction:column;gap:18px}
@@ -145,14 +137,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px}
   .hero-art{width:90vw;opacity:.35;right:-20vw}
   .hero h1{font-size:clamp(4.5rem,19vw,8rem)}
   .about-grid,.contact-grid{grid-template-columns:1fr;gap:45px}
-  .crew{min-height:300px}
+  .crew{min-height:0}
+  .crew img{position:static;width:100%;height:auto;object-fit:initial}
   .ticket{grid-template-columns:85px 1fr;gap:18px}
   .date{padding-right:15px}.date strong{font-size:2.1rem}
   .event h3{font-size:1.5rem}.ticket-link{grid-column:2;justify-self:start}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
-  .photo:nth-child(n){grid-column:auto;grid-row:auto}
-  .photo:nth-child(1){grid-column:span 2;grid-row:span 2}
-  .photo:nth-child(4){grid-column:span 2}
+  .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;align-items:start}
+  .photo:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:auto}
+  .photo img{height:auto;object-fit:initial}
+  .photo:nth-child(3),.photo:nth-child(6){grid-column:1/-1}
   footer .wrap{display:block}.footer-right{margin-top:8px}
 }
 @media(max-width:460px){
@@ -161,5 +154,4 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px}
   .hero h1{font-size:4.35rem}
   .hero h1 .red{margin-left:2vw}
   .about-copy{font-size:1.05rem}
-  .gallery-grid{grid-auto-rows:125px}
 }

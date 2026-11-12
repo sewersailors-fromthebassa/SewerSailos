@@ -2,24 +2,28 @@
 const nav = document.getElementById('nav');
 const menu = document.getElementById('menu');
 const links = document.getElementById('links');
-const modal = document.getElementById('modal');
-const modalLabel = document.getElementById('modalLabel');
 
 // ===== Navbar =====
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
 menu.addEventListener('click', () => links.classList.toggle('open'));
 links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
-// ===== Galleria / modal =====
-document.querySelectorAll('.photo').forEach(photo => {
-  photo.addEventListener('click', () => {
-    modalLabel.textContent = photo.dataset.label || photo.dataset.no;
-    modal.classList.add('open');
+// ===== Carosello merch =====
+const merchCarousel = document.querySelector('[data-merch-carousel]');
+const merchSlides = [...merchCarousel.querySelectorAll('.merch-slide')];
+const merchCount = merchCarousel.querySelector('.merch-carousel-count');
+let currentMerchSlide = 0;
+
+function showMerchSlide(index) {
+  currentMerchSlide = (index + merchSlides.length) % merchSlides.length;
+  merchSlides.forEach((slide, slideIndex) => {
+    slide.hidden = slideIndex !== currentMerchSlide;
   });
-});
-document.getElementById('close').addEventListener('click', () => modal.classList.remove('open'));
-modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
+  merchCount.textContent = `${currentMerchSlide + 1} / ${merchSlides.length}`;
+}
+
+merchCarousel.querySelector('.previous').addEventListener('click', () => showMerchSlide(currentMerchSlide - 1));
+merchCarousel.querySelector('.next').addEventListener('click', () => showMerchSlide(currentMerchSlide + 1));
 
 // ===== Footer: anno corrente =====
 document.getElementById('year').textContent = new Date().getFullYear();
